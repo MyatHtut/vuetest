@@ -2,16 +2,19 @@
     <div>
         <p class="tasks">Completed Tasks: {{todos.filter(todo => {return todo.done === true}).length}}</p>
         <p class="tasks">Pending Tasks: {{todos.filter(todo => {return todo.done === false}).length}}</p>
-        <todo v-for="todo in todos" :todo.sync="todo" v-bind:todo="todo" v-on:delete-todo="deleteTodo" v-on:complete-todo="completeTodo"></todo>
+        <todo v-for="todo in todos" :todo.sync="todo" v-bind:todo="todo" v-on:delete-todo="deleteTodo"
+              v-on:complete-todo="completeTodo"></todo>
+        <testing v-for="item in todos" v-bind:todo="item"></testing>
     </div>
 </template>
 <script type="text/javascript">
-    import Todo from './Todo.vue'
+    import Todo from './Todo.vue';
+    import Testing from './TestingA.vue';
 
     export default {
         props: ['todos'],
         components: {
-            Todo,
+            Todo,Testing
         },
         methods: {
             deleteTodo(todo) {
